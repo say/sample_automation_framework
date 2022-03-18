@@ -15,16 +15,26 @@ class sample_pom:
         self.driver = webdriver.Chrome(chrome_path)
     
     def navigate_to_url(self, url: str) -> str:
+        """
+        navigates to the application pages and validates page displays
+        :param url: the url of the page to navigate to
+        """
         self.driver.get(url)
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="event-header-name"]')))
         return self.driver.title
         
     def get_event_title(self) -> str:
+        """
+        Retrieves the title displayed on the event page
+        """
         event_title = self.driver.find_element(by=By.CSS_SELECTOR, value='[data-testid="event-header-name"]')
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of(event_title))
         return event_title.text
 
     def close_browser(self) -> None:
+        """
+        closes the active session of the current browser
+        """
         self.driver.close()
