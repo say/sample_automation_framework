@@ -28,12 +28,3 @@ class sample_pom:
 
     def close_browser(self) -> None:
         self.driver.close()
-
-    
-if __name__ == '__main__':
-    pom = sample_pom()
-    page_title = pom.navigate_to_url('https://app.say.rocks/apple-load-test-event-4')
-    print(f"page title: {page_title}")
-    event_title = pom.get_event_title()
-    print(f"event title: {event_title}")
-    pom.close_browser()
