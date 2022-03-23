@@ -1,9 +1,11 @@
+from http.server import executable
 import sys
 from os import path
 
 sys.path.append(path.join(path.dirname(__file__), ".."))
 
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,8 +13,9 @@ from selenium.webdriver.support import expected_conditions as EC
 class sample_pom:
 
     def __init__(self) -> None:
-        chrome_path = path.join(path.dirname(__file__), '..', 'config', 'chromedriver')        
-        self.driver = webdriver.Chrome(chrome_path)
+        chrome_driver = path.join(path.dirname(__file__), '..', 'config', 'chromedriver')
+        chrome_service = ChromeService(executable_path=chrome_driver)        
+        self.driver = webdriver.Chrome(service=chrome_service)
     
     def navigate_to_url(self, url: str) -> str:
         """

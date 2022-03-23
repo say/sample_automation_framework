@@ -14,12 +14,12 @@ class SampleTest(unittest.TestCase):
         cls.pom = sample_pom()
 
     def test_open_event_page(self):
-        page_title = self.pom.navigate_to_url('https://app.say.rocks/apple-load-test-event-4')
-        self.assertIn("Apple", page_title)
+        page_title = self.pom.navigate_to_url('https://app.say.rocks/qa-code-challenge')
+        self.assertIn("Apple Q&A - QA Code Challenge", page_title)
 
     def test_validate_event_title(self):
         title = self.pom.get_event_title()
-        self.assertEqual("Apple load test event 4", title)
+        self.assertEqual("Apple Q&A - QA Code Challenge", title)
 
     @classmethod
     def tearDownClass(cls) -> None:
